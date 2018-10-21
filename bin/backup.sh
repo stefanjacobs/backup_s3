@@ -33,12 +33,10 @@ gpg -e -r "${BACKUP_GPG_NAME}" --passphrase "${BACKUP_GPG_PW}" "${ZIP_FILE}"
 echo "PGP encryption done, ${GPG_FILE} created!"
 
 echo "Pushing ${GPG_FILE} to AWS S3 ${BACKUP_S3_BUCKET}"
-aws configure set default.s3.max_bandwidth 100KB/s
-aws configure set default.s3.payload_signing_enabled true
 aws s3 mv "${GPG_FILE}" s3://"${BACKUP_S3_BUCKET}"/
 echo "Pushing ${GPG_FILE} to AWS S3 ${BACKUP_S3_BUCKET} done."
 
-echo "Your backup is now stored at s3://${BACKUP_S3_BUCKET}/${$1}.zip.gpg"
+echo "Your backup is now stored at s3://${BACKUP_S3_BUCKET}/${1}.zip.gpg"
 
 echo "Cleaning backup dir ${BACKUP_PATH}"
 rm -rf ${BACKUP_PATH}/*
