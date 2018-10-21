@@ -1,5 +1,9 @@
 # Backup to S3
 
+## Potential for improvment
+
+- check return codes of commands and retry/abort
+
 ## Motivation
 
 Having a backup can be really expensive. And to be honest, who can be really sure to have it fireproof, geo-redundant and 99.99% accessible? I cannot do this, but a colleague of mine pointed me to AWS Glacier. With Glacier you have to pay 0.0045$ per GB atm in eu-central-1. So if you have e.g. 100 GB of data for backup, you have to pay like ```100 * 0.0045$ = 0.45$``` per month. Calculating for a backup solution for 50 years, results in ```50 * 12 * 0.45$ = 270$```. And that is - for a geo redundant and hardware failure free solution (after all, we calculated for 50 years) - very, very cheap.
